@@ -1,0 +1,7 @@
+#this is the part of the main nginx config
+if (!-f $request_filename) {
+    rewrite ^(.*)\.(jpg|jpeg|gif|css|png|js|ico|swf|txt|eot|svg|ttf|woff|woff2|html|htm|map)$ /webroot$1.$2 break;
+}
+location / {
+    try_files $uri $uri/ /index.php?$args;
+}
